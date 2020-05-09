@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.lupoonehundred'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven{ url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.qos-ch.slf4j:integration:v1.7.7'
+    implementation 'com.github.Javacord.Javacord:javacord:audio-SNAPSHOT'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
+    implementation group: 'com.github.Bastian', name: 'Lavaplayer-Wrapper', version: 'master-SNAPSHOT'
+    runtimeOnly group: 'org.apache.logging.log4j', name: 'log4j-core', version:'2.11.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.2'
+}
