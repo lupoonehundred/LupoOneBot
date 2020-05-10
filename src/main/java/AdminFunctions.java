@@ -19,16 +19,16 @@ public class AdminFunctions extends LupoOneBot implements MessageCreateListener,
                         + banEvent.getMessageAuthor().asUser().orElseThrow().getDiscriminatedName());
                 User bUser = event.getServer().get().getMemberById(event.getMessageContent().split(" ")[1]).get();
                 loggerGetter().info("User to be Banned received: " + bUser.getDiscriminatedName());
-                event.getServer().get().kickUser(bUser);
+                event.getServer().get().banUser(bUser);
                 loggerGetter().info("User has been Banned: " + bUser.getDiscriminatedName());
             }
             else if(banEvent.getMessage().getContent().contains("!ban") &&
                     !banEvent.getMessageAuthor().isServerAdmin()) {
                 loggerGetter().info("!ban received from a NonAdmin " + banEvent.getMessageAuthor().asUser().toString());
-                User kUser = event.getServer().get().getMemberById(event.getMessage().getAuthor().getId()).get();
-                loggerGetter().info("User to be Banned received: " + kUser.getDiscriminatedName());
-                event.getServer().get().kickUser(kUser);
-                loggerGetter().info("User has been Banned: " + kUser.getDiscriminatedName());
+                User bUser = event.getServer().get().getMemberById(event.getMessage().getAuthor().getId()).get();
+                loggerGetter().info("User to be Banned received: " + bUser.getDiscriminatedName());
+                event.getServer().get().banUser(bUser);
+                loggerGetter().info("User has been Banned: " + bUser.getDiscriminatedName());
             }
         });
         //Listens to a users ban
