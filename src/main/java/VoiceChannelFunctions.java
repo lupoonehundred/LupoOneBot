@@ -65,13 +65,17 @@ public class VoiceChannelFunctions extends LupoOneBot implements ServerVoiceChan
 
     private void messageListeners(AudioConnection connected) {
         //These methods listens to the rest of the commands
+        //TODO Test the command and add MessageBuilders to Queue.
         //TODO Either wait for them to make something or make one on your own.
         apiGetter().addMessageCreateListener(queueEvent -> {
             if(queueEvent.getMessage().getContent().equalsIgnoreCase("!queue")) {
-
+                loggerGetter().error("Currently Unuseable Function called by "
+                        + queueEvent.getMessageAuthor().getDiscriminatedName());
             }
         });
         //get a list of the current queue
+
+        //TODO Test the command and add MessageBuilders to Skip.
         apiGetter().addMessageCreateListener(skipEvent -> {
             if(skipEvent.getMessage().getContent().equalsIgnoreCase("!skip")) {
                 //Dont know if this can get an error or not
@@ -81,6 +85,8 @@ public class VoiceChannelFunctions extends LupoOneBot implements ServerVoiceChan
             }
         });
         //skips the next source/song
+
+        //TODO Test the command and add MessageBuilders to Stop.
         apiGetter().addMessageCreateListener(stopEvent -> {
             if(stopEvent.getMessage().getContent().equalsIgnoreCase("!stop")) {
                 loggerGetter().info("Connection interrupted by !stop command from User"
