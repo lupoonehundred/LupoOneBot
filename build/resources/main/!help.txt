@@ -7,7 +7,7 @@
 **Music Options**
 - !music-request [Youtube Share Link] - Pass the direct youtube link to be played in the voice channel.
 *This option only works for music and will not work with normal videos.*
-- !queue - Gives the current music queue needed to play.
+- !queue - Gives the current music queue needed to play. (Not Functional)
 - !skip - Skip the next song in queue.
 - !stop - Ends the song and removes the queue.
 **Information Option**

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration name="Javacord Example Bot" status="INFO" strict="true">
     <Appenders>
-        <File name="File Appender" fileName="log/myfirstbot.log" createOnDemand="true">
+        <File name="File Appender" fileName="log/LupoOneBotLog.log" createOnDemand="true">
             <PatternLayout>
                 <Pattern><![CDATA[%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}] %m%n]]></Pattern>
             </PatternLayout>
