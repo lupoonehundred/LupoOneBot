@@ -1,15 +1,15 @@
-Don't know the Commands? Try these in the Text Channel.
+**-**Don't know the Commands? Try these in the Text Channel.**-**
 - !help - Sends you this text
 - !verify - Asks the bot to verify your account
-Admin Options
+**Admin Options**
 - !ban/kick [user id] - Bans/kicks a member from the server.
 - !unban [user id] - Unbans a member from the server.
-Music Options
+**Music Options**
 - !music-request [Youtube Share Link] - Pass the direct youtube link to be played in the voice channel.
 *This option only works for music and will not work with normal videos.*
 - !queue - Gives the current music queue needed to play.
 - !skip - Skip the next song in queue.
 - !stop - Ends the song and removes the queue.
-Information Option
+**Information Option**
 - !call-api [Link/Name] - Returns requested information from a specified api.
 - !save-api [Link] [Name] - (Admins Only) Saves a certain api under a name to be recalled later.
