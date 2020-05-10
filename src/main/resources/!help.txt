@@ -1,4 +1,4 @@
-**-**Don't know the Commands? Try these in the Text Channel.**-**
+**---**Don't know the Commands? Try these in the Text Channel.**---**
 - !help - Sends you this text
 - !verify - Asks the bot to verify your account
 **Admin Options**
