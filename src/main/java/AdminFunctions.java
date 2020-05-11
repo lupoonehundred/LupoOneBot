@@ -74,19 +74,19 @@ public class AdminFunctions extends LupoOneBot implements MessageCreateListener,
     //Sends the Owner the User and Deleted Message.
     @Override
     public void onMessageDelete(MessageDeleteEvent event) {
-        loggerGetter().info("The Message from " + event.getMessage().orElseThrow().getAuthor().getDiscriminatedName() +
-                " \"" + event.getMessageContent().orElseThrow() + "\" Has been Deleted!");
-        loggerGetter().info("Opening a Private Channel with User Admin: " + event.getServer().orElseThrow().getOwner().getDiscriminatedName());
+        loggerGetter().info("The Message from " + event.getMessage().orElseThrow().getAuthor().getDiscriminatedName()
+                            + " \"" + event.getMessageContent().orElseThrow() + "\" Has been Deleted!");
+        loggerGetter().info("Opening a Private Channel with User Admin: "
+                            + event.getServer().orElseThrow().getOwner().getDiscriminatedName());
         event.getServer().get().getOwner().openPrivateChannel()
-                .thenAcceptAsync(privateChannel -> privateChannel.sendMessage("User " + event.getMessage().get().getAuthor().getDiscriminatedName()
-                + " wrote \"" + event.getMessageContent().get() + "\" and the message got deleted."))
+                .thenAcceptAsync(privateChannel -> privateChannel.sendMessage("User "
+                        + event.getMessage().get().getAuthor().getDiscriminatedName()
+                        + " wrote \"" + event.getMessageContent().get() + "\" and the message got deleted."))
                 //Tries to send a message to the Owner
                 .exceptionally(throwable -> {
                     loggerGetter().error("Sending Deleted Message to Owner Error " + throwable.getCause());
                     return null;
-                })
-                .exceptionally(ExceptionLogger.get());
-                //Both Catch the exception being thrown.
-                //TODO Find how and where this goes to.
+                });
+                //Catch the exception being thrown.
     }
 }
