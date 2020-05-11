@@ -15,23 +15,24 @@ public class BotFunctions extends LupoOneBot implements ServerMemberJoinListener
                 event.getServer().getName() + " " +
                 event.getUser().getDiscriminatedName());
         //Logs the name and server the user has joined.
-        //FIXME Fix how the verification process works
-
+        loggerGetter().info("Opening a private channel with User: " + event.getUser().getDiscriminatedName());
         event.getUser().openPrivateChannel()
                 .thenAcceptAsync(channel -> {
                     channel.sendMessage("Please Verify Who You Are. \nReply With your Current Display Name. (Case Sensitive)\nYou have 30 secs.");
                     loggerGetter().info("sent Verification to User: " + event.getUser().getDiscriminatedName());
+                })
+                .exceptionally(throwable -> {
+                    loggerGetter().error("Opening a Private Channel with " + event.getUser().getDiscriminatedName(), throwable);
+                    return null;
                 });
         //Gets the user and asks for verification
-        //TODO add an Exceptionally catcher
-        loggerGetter().info("Opening a private channel with User: " + event.getUser().getDiscriminatedName());
         apiGetter().addPrivateChannelCreateListener(new BotFunctions());
         //Logs and opens a new Private Channel with the User.
     }
 
     @Override
     public void onPrivateChannelCreate(PrivateChannelCreateEvent event) {
-        if(serverJoined.getOwner().getDiscriminatedName().equals(event.getUser().getDiscriminatedName())) { return;}
+        if(event.getUser().getDiscriminatedName().equals(serverJoined.getOwner().getDiscriminatedName())) { return; }
         try {
             loggerGetter().info("Sleep Started.");
             Thread.sleep(30000);
@@ -84,8 +85,11 @@ public class BotFunctions extends LupoOneBot implements ServerMemberJoinListener
                 serverJoined.kickUser(kUser);
                 loggerGetter().info("User has been Kicked: " + kUser.getDiscriminatedName());
                 event.getChannel().sendMessage("Verification failed and Removed from Server.");
+            })
+            .exceptionally(throwable -> {
+                loggerGetter().error("Error in Verification Process", throwable);
+                return null;
             });
         //Send message to a User personally
-        //TODO add an Exceptionally catcher
     }
 }
