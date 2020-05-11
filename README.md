@@ -9,8 +9,7 @@ The LupoOneBot is the all in one bot for discord that can do a range of things a
 
 These are commands that are currently work on the bot.
 
-- `!help` - Sends you this text.
-- `!verify` - Asks the bot to verify your account.
+- `!help` - Sends a this list of commands.
 
   **Admin Options**
 - `!ban/kick [user id]` - Bans/kicks a member from the server.
@@ -30,13 +29,8 @@ These are commands that are currently work on the bot.
   **Music Options**
 - [ ] `!queue` - Returns the current queue of sources the are going to play.
 
-  **Information Options**
-- [ ] `!call-api [Link/Name]` - Returns requested information from a specified api.
-- [ ] `!save-api [Link] [Name]` - (Admins Only) Saves a certain api under a name to be recalled later.
-
-If you have any suggestions make sure to open an Issue with the feature as the title. 
+If you have any suggestions make sure to open an Issue with the feature as the title and tag it as an enhancement.
 
 ## Installation & Server Joining
 
-The bot is not open to join servers but in the future when the Bot is bug-free with the current features.
-If you want to help with developing, Contact me at LupoOneBot@gmail.com. 
+The bot is not open to join servers but in the future when the Bot is bug-free with the current features, it will be avaliable. If you want to help with developing, Contact me at LupoOneBot@gmail.com. 
