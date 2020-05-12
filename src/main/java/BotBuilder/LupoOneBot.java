@@ -11,7 +11,7 @@ public class LupoOneBot {
     private static final Logger logger = LogManager.getLogger(LupoOneBot.class.getName());
     //TODO Possibly Fix all the Loggers to get them to have important information.
     public static void main(String[] args) {
-        api = new DiscordApiBuilder().setToken("NTYyODA5NjY5NTAwOTI4MDEw.XriCaQ.JeLQgj_aDVXpz0B5aF9ihGPPvxU").login().join();
+        api = new DiscordApiBuilder().setToken(args[0]).login().join();
         //Builds the bot and logs in to the account.
 
         FallbackLoggerConfiguration.setDebug(true);
