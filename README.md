@@ -1,6 +1,6 @@
 # LupoOneBot
 
-To find the classes, Navigate to src/main/java in the Github project or [Press Here](https://github.com/lupoonehundred/BotBuilder/LupoOneBot/tree/master/src/main/java)
+To find the classes, Navigate to src/main/java in the Github project or [Press Here](https://github.com/lupoonehundred/LupoOneBot/tree/master/src/main/java)
 ## Description
 
 The LupoOneBot is the all in one bot for discord that can do a range of things and will be constantly be updated on a regular basis. A couple of starting features are simple commands in text channel, private messaging, music streaming, and more.
