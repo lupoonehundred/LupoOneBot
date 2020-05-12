@@ -1,6 +1,4 @@
 **---**Don't know the Commands? Try these in the Text Channel.**---**
-- !help - Sends you this text
-- !verify - Asks the bot to verify your account
 **Admin Options**
 - !ban/kick [user id] - Bans/kicks a member from the server.
 - !unban [user id] - Unbans a member from the server.
