@@ -1,3 +1,5 @@
+package BotAudio;
+
 import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.audio.AudioSource;
 import org.javacord.api.entity.channel.ServerVoiceChannel;

@@ -1,13 +1,15 @@
+package BotCommands;
+
+import BotBuilder.BotListeners;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.event.message.MessageDeleteEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 import org.javacord.api.listener.message.MessageDeleteListener;
-import org.javacord.api.util.logging.ExceptionLogger;
 
 import java.util.concurrent.ExecutionException;
 
-public class AdminFunctions extends LupoOneBot implements MessageCreateListener, MessageDeleteListener {
+public class AdminFunctions extends BotListeners implements MessageCreateListener, MessageDeleteListener {
     //FIXME Test this section Completely
     @Override
     public void onMessageCreate(MessageCreateEvent event) { //Contains the Ban/Kick/Unban functions

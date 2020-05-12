@@ -1,7 +1,11 @@
+package BotAudio;
+
+import BotBuilder.LupoOneBot;
 import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.audio.AudioSource;
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
+import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.channel.server.voice.ServerVoiceChannelMemberJoinEvent;
@@ -15,14 +19,25 @@ public class VoiceChannelFunctions extends LupoOneBot implements ServerVoiceChan
     public void onServerVoiceChannelMemberJoin(ServerVoiceChannelMemberJoinEvent event) {
         loggerGetter().info("A User has joined a Voice Channel: " + event.getChannel().asVoiceChannel().toString());
         //quick leave condition if no one else is in the given voice channel.
-
+        apiGetter().addServerVoiceChannelMemberLeaveListener(leaveEvent -> {
+            leaveEvent.getServer().getAudioConnection().ifPresent(connection -> {
+                if (connection.getChannel() == leaveEvent.getChannel()) {
+                    if (leaveEvent.getChannel().getConnectedUsers().size() <= 1) {
+                        event.getServer().getTextChannelsByName("music-text-channel").get(0)
+                                .sendMessage("Bot has left the VC, Music from queue has been removed");
+                        connection.close();
+                    }
+                }
+            });
+        });
+        //If Someone leaves the Voice Channel,FIXME Dont think I need this
         /*  This method has a couple of IDE required security asserts.
             ".orElseThrow(AssertionError::new)" still learning what these are
             and how to use them correctly.
         */
         //TODO Possibly find a way to optimize this section.
         event.getApi().addMessageCreateListener(eventMusic -> {
-            loggerGetter().info("Opened a MessageCreateListener in the VoiceChannelFunctions class");
+            loggerGetter().info("Opened a MessageCreateListener in the BotAudio.VoiceChannelFunctions class");
             User author = null;
             String video = "";
             if (eventMusic.getMessage().getContent().contains("!request")) {
@@ -104,5 +119,16 @@ public class VoiceChannelFunctions extends LupoOneBot implements ServerVoiceChan
             }
         });
         //stops and disconnects the bot from the voice channel
+
+        apiGetter().addMessageCreateListener(cSongEvent -> {
+            if(cSongEvent.getMessage().getContent().equalsIgnoreCase("!song")) {
+                loggerGetter().info("Receiving the Current Audio Sources for " + cSongEvent.getMessageAuthor().getName());
+
+                new MessageBuilder()
+                        .append("This is the current song playing ")
+                        .append(new QueueEvent(serverVC, connected).getCurrentAudioSource().get().toString())
+                        .send(cSongEvent.getChannel());
+            }
+        });
     }
 }
